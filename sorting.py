@@ -190,21 +190,21 @@ def quick_sort(xs, cmp=cmp_standard):
     You should directly modify the input xs variable
     instead of returning a copy of the list.
     '''
-    def partition(A, lo, hi):
-        pivot = A[hi]
+    def partition(a, lo, hi):
+        pivot = a[hi]
         i = lo - 1
         for j in range(lo, hi):
-            if cmp(pivot, A[j]) == 1 or cmp(pivot, A[j]) == 0:
+            if cmp(pivot, a[j]) == 1 or cmp(pivot, a[j]) == 0:
                 i += 1
-                A[i], A[j] = A[j], A[i]
-        A[i + 1], A[hi] = A[hi], A[i + 1]
+                a[i], a[j] = a[j], a[i]
+        a[i + 1], a[hi] = a[hi], a[i + 1]
         return i + 1
 
-    def helper(A, lo, hi):
+    def helper(a, lo, hi):
         if lo >= hi:
             return xs
         else:
             p = partition(xs, lo, hi)
-            helper(A, lo, p - 1)
-            helper(A, p + 1, hi)
+            helper(a, lo, p - 1)
+            helper(a, p + 1, hi)
     return helper(xs, 0, len(xs) - 1)
